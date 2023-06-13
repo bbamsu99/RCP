@@ -13,9 +13,10 @@
 
      <h1>헬스장 pt 일지 {% if category %} postings with category {{ category }}
      {% endif %}
-     {% if tag %} postings with tag {{ tag }}
 
-     {% endif %}
+        {% if tag %} postings with tag {{ tag }}
+        {% endif %}
+
      
      </h1>
 
@@ -28,7 +29,8 @@
                         <img class="card-img-top" src="/media/body/images/2023/06/13/f1.png" style="max-width: 100px; height: 100px;">
                     {% endif %}
                     <div class="card-body">
-                        <h2 class="card-title">{{ p.title}} ({{ p.category }})</h2>
+                        <h2 class="card-title">{{ p.title}}</h2>
+{#                        ({{ p.category }})</h2>#}
                         <p class="card-text">{{ p.content | truncatewords:30 }}</p>
 
                         <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
