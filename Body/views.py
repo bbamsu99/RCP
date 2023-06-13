@@ -1,9 +1,19 @@
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from Body.models import Post, Category, Tag
 
+class PostUpdate(LoginRequiredMixin, UpdateView):
+    model = Post
+    fields = ['title', 'content', 'head_image', 'category', 'tag']
+
+    template_name = 'body/post_update.html'
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and self.get_object().author == request.user:
+            return super(PostUpdate,self).dispatch(request, *args, **kwargs)
+        else:
+            raise PermissionError
 
 # Create your views here.
 class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
@@ -19,7 +29,7 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             form.instance.author = self.request.user
             return super(PostCreate, self).form_valid(form)
         else:
-            return redirect('/blog/')
+            return redirect('/body/')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(PostCreate, self).get_context_data()

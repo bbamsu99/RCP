@@ -4,14 +4,14 @@
 {% block main_area %}
 
     {% if user.is_authenticated %}
-{#        {% if user.is_superuser or user.is_staff %}#}
+        {% if user.is_superuser or user.is_staff %}
             <a href="/body/create_post">글쓰기</a>
         {% endif %}
 
     {% endif %}
 
 
-     <h1>Body {% if category %} postings with category {{ category }}
+     <h1>헬스장 pt 일지 {% if category %} postings with category {{ category }}
      {% endif %}
      {% if tag %} postings with tag {{ tag }}
 
