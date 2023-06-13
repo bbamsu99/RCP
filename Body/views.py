@@ -1,10 +1,32 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.shortcuts import render, redirect
+from django.views.generic import ListView, DetailView, CreateView
 
 from Body.models import Post, Category, Tag
 
 
 # Create your views here.
+class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    model = Post
+    fields = ['title', 'content', 'head_image', 'category', 'tag']
+
+    def test_func(self):
+        return self.request.user.is_staff or self.request.user.is_superuser
+
+    def form_valid(self, form):
+
+        if self.request.user.is_authenticated and (self.request.user.is_superuser or self.request.user.is_staff):
+            form.instance.author = self.request.user
+            return super(PostCreate, self).form_valid(form)
+        else:
+            return redirect('/blog/')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(PostCreate, self).get_context_data()
+        context['categories'] = Category.objects.all()
+        context['no_category_count'] = Post.objects.filter(category=None).count()
+
+        return context
 
 class PostList(ListView):
     model = Post
