@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
-from Body.models import Post, Category
+from Body.models import Post, Category, Tag
 
 
 # Create your views here.
@@ -43,3 +43,17 @@ def categories_page(request, slug):
         'no_category_count' : Post.objects.filter(category=None).count()
     }
     return render(request, 'body/post_list.html', context)
+
+def tag_page(request, slug):
+
+    tag = Tag.objects.get(slug=slug)
+    post_list = tag.post_set.all()
+
+    context = {
+        'tag' : tag,
+        'categories' : Category.objects.all(),
+        'post_list' : post_list,
+        'no_category_count' : Post.objects.filter(category=None).count()
+    }
+    return render(request, 'body/post_list.html', context)
+
