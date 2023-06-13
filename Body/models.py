@@ -17,14 +17,14 @@ class Category(models.Model):
     slug = models.SlugField(max_length=50, unique=True, allow_unicode=True )
 
 
-    # def get_absolute_url(self):
-    #     return f'/body/category/{self.slug}'
+    def get_absolute_url(self):
+        return f'/body/category/{self.slug}'
 
     def __str__(self):
         return self.name
-    #
-    # class Meta:
-    #     verbose_name_plural = 'Categories'
+
+    class Meta:
+        verbose_name_plural = 'Categories'
 
 # Create your models here.
 class Post(models.Model):
