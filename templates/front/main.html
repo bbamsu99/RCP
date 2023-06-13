@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <nav><a href="/body/">회원들만 누를 수 있습니다.</a></nav>
+  <title>단체 헬스장 일지</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .header {
+      background-color: black;
+      color: white;
+      padding: 20px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .content {
+      background-color: white;
+      padding: 20px;
+    }
+
+    .content h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .content p {
+      margin: 0;
+      margin-bottom: 10px;
+    }
+
+    .photos {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .photo {
+      width: 200px;
+      height: 150px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>헬스장 이름</h1>
+    <p>위치: 헬스장 위치</p>
+    <p>전화번호: 헬스장 전화번호</p>
+  </div>
+
+  <div class="content">
+    <h2>헬스장 사진</h2>
+    <div class="photos">
+      <div class="photo"></div>
+      <div class="photo"></div>
+      <div class="photo"></div>
+      <div class="photo"></div>
+      <div class="photo"></div>
+    </div>
+  </div>
+{#<div class="col-md-4 col-lg-3">#}
+{#                <!-- Categories Widget -->#}
+{#                <div class="card my-4">#}
+{#                    <h5 class="card-header">Categories</h5>#}
+{#                    <div class="card-body">#}
+{#                        <div class="row">#}
+{#                            <div class="col-lg-6">#}
+{#                                <ul class="list-unstyled mb-0">#}
+{#                                    {% for category in categories %}#}
+{#                                        <li>#}
+{#                                            <a href="{{category.get_absolute_url}}">{{ category.name }}</a>#}
+{#                                        </li>#}
+{#                                    {% endfor %}#}
+{#                                    <li>#}
+{#                                        <a href="/front/category/no-category">미분류({{ no_category_count }})</a>#}
+{#                                    </li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+
+</body>
+</html>
