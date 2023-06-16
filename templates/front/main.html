@@ -57,16 +57,69 @@
     <p>전화번호: 헬스장 전화번호</p>
   </div>
 
-  <div class="content">
-    <h2>헬스장 사진</h2>
-    <div class="photos">
-      <div class="photo"></div>
-      <div class="photo"></div>
-      <div class="photo"></div>
-      <div class="photo"></div>
-      <div class="photo"></div>
+  <style>
+  .photos {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .photo {
+    flex-basis: 100%;
+    max-width: 200px;
+    max-height: 200px;
+    margin-bottom: 10px;
+  }
+
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<div class="content">
+  <h2>헬스장 사진</h2>
+  <div class="photos">
+    <div class="photo">
+      <img class="card-img-top" src="/media/body/images/2023/06/16/헬스장1.png">
+    </div>
+    <div class="photo">
+      <img class="card-img-top" src="/media/body/images/2023/06/16/헬스장2.png">
+    </div>
+    <div class="photo">
+      <img class="card-img-top" src="/media/body/images/2023/06/16/헬스장3.png">
+    </div>
+    <div class="photo">
+      <img class="card-img-top" src="/media/body/images/2023/06/16/헬스장4.png">
+    </div>
+    <div class="photo">
+      <img class="card-img-top" src="/media/body/images/2023/06/16/헬스장5.png">
     </div>
   </div>
+</div>
+{#  <div class="content">#}
+{#    <h2>헬스장 사진</h2>#}
+{#    <div class="photos">#}
+{#      <div class="photo">#}
+{#          <img class="card-img-top" src="/media/body/images/2023/06/16/헬스장1.png" style="max-width: 200px; height: 200px;">#}
+{#      </div>#}
+{#      <div class="photo">#}
+{#           <img class="card-img-top" src="/media/body/images/2023/06/16/헬스장2.png" style="max-width: 200px; height: 200px;">#}
+{#      </div>#}
+{#      <div class="photo">#}
+{#           <img class="card-img-top" src="/media/body/images/2023/06/16/헬스장3.png" style="max-width: 200px; height: 200px;">#}
+{#      </div>#}
+{#      <div class="photo">#}
+{#           <img class="card-img-top" src="/media/body/images/2023/06/16/헬스장4.png" style="max-width: 200px; height: 200px;">#}
+{#      </div>#}
+{#      <div class="photo">#}
+{#           <img class="card-img-top" src="/media/body/images/2023/06/16/헬스장5.png" style="max-width: 200px; height: 200px;">#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+
+
+
 {#<div class="col-md-4 col-lg-3">#}
 {#                <!-- Categories Widget -->#}
 {#                <div class="card my-4">#}
@@ -90,6 +143,8 @@
 {#                    </div>#}
 {#                </div>#}
 {#            </div>#}
+
+<h4>        헬스장 오시는길 : 걸어서</h4>
 
 </body>
 </html>
