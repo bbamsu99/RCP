@@ -75,7 +75,7 @@ def categories_page(request, slug):
         'post_list' : post_list,
         'no_category_count' : Post.objects.filter(category=None).count()
     }
-    return render(request, 'body/post_list.html', context)
+    return render(request, 'Body/post_list.html', context)
 
 def tag_page(request, slug):
 
@@ -88,7 +88,7 @@ def tag_page(request, slug):
         'post_list' : post_list,
         'no_category_count' : Post.objects.filter(category=None).count()
     }
-    return render(request, 'body/post_list.html', context)
+    return render(request, 'Body/post_list.html', context)
 
 def add_comment(request, pk):
     if not request.user.is_authenticated:
