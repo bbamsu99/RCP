@@ -1,0 +1,75 @@
+{% extends 'Body/base.html' %}
+
+
+{% block main_area %}
+
+    {% if user.is_authenticated %}
+{#        {% if user.is_superuser or user.is_staff %}#}
+{#            <a href="/body/create_post">글쓰기</a>#}
+{#        {% endif %}#}
+        <a class="create-post-button" href="/body/create_post">글쓰기</a>
+
+<style>
+  .create-post-button {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    z-index: 9999;
+  }
+</style>
+
+    {% endif %}
+
+
+     <h1>헬스장 pt 일지
+{#         {% if category %}#}
+{#             postings with category {{ category }}#}
+{#         {% endif %}#}
+{##}
+{#        {% if tag %}#}
+{#            postings with tag {{ tag }}#}
+{#        {% endif %}#}
+
+     
+     </h1>
+
+                {% for p in post_list %}
+                <!-- Body Post -->
+                <div class="card mb-4">
+                    {% if p.head_image %}
+                        <img class="card-img-top" src="{{ p.head_image.url }}" alt="Card image cap" style="max-width: 100px; height: 100px;">
+                    {% else %}
+                        <img class="card-img-top" src="/media/body/images/2023/06/13/f1.png" style="max-width: 100px; height: 100px;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h2 class="card-title">{{ p.title }}</h2>
+{#                        ({{ p.category }})</h2>#}
+                        <p class="card-text">{{ p.content | truncatewords:30 }}</p>
+
+                        <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Posted on {{ p.created_at }} by {{ p.author }}
+{#                        <a href="#"> {{ p.author }}</a>#}
+                    </div>
+                </div>
+                {% endfor %}
+
+
+                <!-- Pagination -->
+{#                <ul class="pagination justify-content-center mb-4">#}
+{#                    <li class="page-item">#}
+{#                        <a class="page-link" href="#">&larr; Older</a>#}
+{#                    </li>#}
+{#                    <li class="page-item disabled">#}
+{#                        <a class="page-link" href="#">Newer &rarr;</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{% endblock %}
