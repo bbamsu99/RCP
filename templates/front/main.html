@@ -1,7 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <nav><a href="/body/">회원들만 누를 수 있습니다.</a></nav>
+    <nav>
+
+            {% if user.is_authenticated %}
+{#        {% if user.is_superuser or user.is_staff %}#}
+{#            <a href="/body/create_post">글쓰기</a>#}
+{#        {% endif %}#}
+        <a class="create-post-button" href="/body/">회원님들만 누를 수 있습니다</a>
+
+<style>
+  .create-post-button {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    z-index: 9999;
+  }
+</style>
+
+    {% endif %}
+
+
+
+{#        <a href="/body/">회원들만 누를 수 있습니다.</a>#}
+    </nav>
   <title>단체 헬스장 일지</title>
   <style>
     body {
