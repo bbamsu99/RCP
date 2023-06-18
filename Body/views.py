@@ -9,7 +9,7 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
     fields = ['title', 'content', 'head_image', 'category', 'tag']
 
-    template_name = 'body/post_update.html'
+    template_name = 'Body/post_update.html'
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated and self.get_object().author == request.user:
             return super(PostUpdate,self).dispatch(request, *args, **kwargs)
