@@ -32,7 +32,6 @@ class Post(models.Model):
     content = models.TextField()
 
     head_image = models.ImageField(upload_to='body/images/%Y/%m/%d/', blank=True)
-    # file_upload = models.FileField(upload_to='body/files/%Y/%m/%d/', blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -46,9 +45,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return f'/body/{self.pk}'
-
-    # def get_file_name(self):
-    #     return os.path.basename(self.file_upload.name)
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
