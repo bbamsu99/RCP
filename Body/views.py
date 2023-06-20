@@ -11,7 +11,7 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
 
     template_name = 'Body/post_update.html'
     def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated: #and self.get_object().author == request.user:
+        if request.user.is_authenticated:
             return super(PostUpdate,self).dispatch(request, *args, **kwargs)
         else:
             raise PermissionError
@@ -22,11 +22,11 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     fields = ['title', 'content', 'head_image', 'category', 'tag']
 
     def test_func(self):
-        return self.request.user.is_staff or self.request.user.is_superuser
+        return self.request.user.is_authenticated
 
     def form_valid(self, form):
 
-        if self.request.user.is_authenticated and (self.request.user.is_superuser or self.request.user.is_staff):
+        if self.request.user.is_authenticated:
             form.instance.author = self.request.user
             return super(PostCreate, self).form_valid(form)
         else:
@@ -43,7 +43,7 @@ class PostList(ListView):
     model = Post
     ordering = '-updated_at'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
+    def get_context_data(self, *, object_lisgt=None, **kwargs):
         context = super(PostList, self).get_context_data()
         context['categories'] = Category.objects.all()
         context['no_category_count'] = Post.objects.filter(category=None).count()
