@@ -11,7 +11,7 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
 
     template_name = 'Body/post_update.html'
     def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated and self.get_object().author == request.user:
+        if request.user.is_authenticated: #and self.get_object().author == request.user:
             return super(PostUpdate,self).dispatch(request, *args, **kwargs)
         else:
             raise PermissionError
